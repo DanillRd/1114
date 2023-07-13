@@ -18,7 +18,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   props: {
@@ -42,7 +41,6 @@ export default {
       this.isFlipped = !this.isFlipped;
     },
     startTimer() {
-
       this.timer = setTimeout(() => {
         this.resetCard();
       }, 10000); // 10 секунд
@@ -61,7 +59,6 @@ export default {
       }
     }
   },
-
   computed: {
     cardClass() {
       return {
@@ -76,17 +73,12 @@ export default {
 .card {
   width: 240px; /* ширина карты */
   height: 360px; /* высота карты */
-  position: sticky;
+  position: relative;
   perspective: 800px;
-  margin-bottom: 10px; /* Уменьшен отступ снизу */
-  border: 1px solid #ccc; /* Добавлен стиль границы */
-  border-radius: 4px; /* Добавлен стиль скругленных углов */
-  margin-left: 50px; /* Уменьшен отступ слева */
-  margin-right: 50px; /* Уменьшен отступ справа */
-  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-family: "Gill Sans", sans-serif;
-  background-size: cover;
-  background-color: lightseagreen;
 }
 
 .card-inner {
@@ -95,10 +87,8 @@ export default {
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 0.6s;
-  border: 3px solid #ccc; /* Добавлен стиль границы */
-  border-radius: 4px; /* Добавлен стиль скругленных углов */
-  margin-top: auto;
-  background-color: #CD6600;
+  border: 3px solid #ccc;
+  border-radius: 4px;
 }
 
 .card:hover .card-inner {
@@ -111,15 +101,16 @@ export default {
   height: 100%;
   position: absolute;
   backface-visibility: hidden;
-  background-color: #CD6600;
 }
 
 .card-front {
   transform: rotateY(0deg);
+  background-color: #CD6600;
 }
 
 .card-back {
   transform: rotateY(180deg);
+  background-color: #f5f5f5;
 }
 
 .image-wrapper {
@@ -138,7 +129,6 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,7 +136,6 @@ export default {
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
-  margin-top: auto;
 }
 
 h2 {
@@ -154,31 +143,37 @@ h2 {
   font-size: 1.1rem;
   margin-bottom: 10px;
 }
-p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
-}
-.flipped {
-  transform: rotateY(180deg) scale(1.2);
-}
+
 p.overview {
   font-size: 0.8rem;
   color: #555;
   margin-bottom: 15px;
-  max-height: 120px; /* Измените на желаемую максимальную высоту текста */
+  max-height: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.movie-link {
+
+a.movie-link {
   color: #007bff;
   text-decoration: none;
-  transition: all 0.3s ease-in-out; /* добавляем плавный переход при наведении */
+  transition: all 0.3s ease-in-out;
   border: 2px solid #ccc;
 }
-.movie-link:hover {
-  color: #0056b3; /* изменяем цвет текста при наведении */
+
+a.movie-link:hover {
+  color: #0056b3;
   border: 2px solid #ccc;
+}
+
+.flipped {
+  transform: rotateY(180deg) scale(1.2);
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: 100%;
+    height: auto;
+  }
 }
 </style>
 
